@@ -1,4 +1,4 @@
-package com.educandoweb.course.resources;
+package com.educandoweb.course.controller;
 
 import java.util.List;
 
@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.educandoweb.course.entities.User;
-import com.educandoweb.course.services.UserService;
+import com.educandoweb.course.services.impl.UserServiceImpl;
 
 @RestController
 @RequestMapping(value = "/users")
-public class UserResource {
+public class UserController {
 	
 	@Autowired
-	private UserService service;
+	private UserServiceImpl service;
 	
 	@GetMapping
 	public ResponseEntity<List<User>> findAll() {

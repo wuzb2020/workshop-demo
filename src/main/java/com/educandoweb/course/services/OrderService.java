@@ -1,26 +1,14 @@
 package com.educandoweb.course.services;
 
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.educandoweb.course.dto.OrderPageDTO;
 import com.educandoweb.course.entities.Order;
-import com.educandoweb.course.repositories.OrderRepository;
+import com.educandoweb.course.entities.enums.PaymentType;
 
-@Service
-public class OrderService {
-	
-	@Autowired
-	private OrderRepository repository;
-	
-	public List<Order> findAll() {
-		return repository.findAll();
-	}
-	
-	public Order findById(Long id) {
-		Optional<Order> obj = repository.findById(id);
-		return obj.get();
-	}
+public interface OrderService {
+    Order findById(Long id);
+
+    Order save(Long skuId, PaymentType type);
+
+    IPage<Order> gePage(OrderPageDTO orderPageDTO);
 }
